@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="pac.Alumno" table="alumnos" catalog="m06">
+
+        <id name="id" column="idAlumno" type="long">
+
+            <generator class="increment"/>
+
+        </id>
+
+        <property name="nombre" type="string"></property>
+        <property name="nacionalidad" type="string"></property>
+        <property name="edad" type="integer"></property>
+        <property name="sexo" type="string"></property>
+        <set name="modulos" table="alumno_modulo">
+            <key>
+                <column name="idAlumno"/>
+            </key>
+            <many-to-many class="pac.Modulo">
+                <column name="idModulo"/>
+            </many-to-many>
+        </set>
+
+    </class>
+
+</hibernate-mapping>
